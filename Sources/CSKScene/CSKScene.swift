@@ -3,7 +3,7 @@ import GCOverseer
 import SpriteKit
 
 /// A **custom** `SKScene` subclass with debug options enabled by default and an instance of `GCOverseer`.
-public class CSKScene: SKScene {
+open class CSKScene: SKScene {
 
     let debugSettings: DebugSettings
 
