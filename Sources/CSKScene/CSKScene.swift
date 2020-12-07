@@ -23,6 +23,16 @@ open class CSKScene: SKScene {
         super.init(size: size)
     }
 
+    public override init() {
+        self.debugSettings = DebugSettings()
+        super.init()
+    }
+
+    public override init(size: CGSize) {
+        self.debugSettings = DebugSettings()
+        super.init(size: size)
+    }
+
     public required init?(coder aDecoder: NSCoder) {
         self.debugSettings = DebugSettings()
         super.init(coder: aDecoder)
