@@ -41,9 +41,9 @@ open class CSKScene: SKScene {
 
 // MARK: - SpriteKit
 
-public extension CSKScene {
+extension CSKScene {
 
-    override func didMove(to view: SKView) {
+    open override func didMove(to view: SKView) {
         super.didMove(to: view)
         setupDebugSettings()
         logInformation()
