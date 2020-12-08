@@ -44,9 +44,9 @@ open class CSKScene: SKScene {
 extension CSKScene {
 
     open override func didMove(to view: SKView) {
-        super.didMove(to: view)
         setupDebugSettings()
         logInformation()
+        super.didMove(to: view)
     }
 }
 
