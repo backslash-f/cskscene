@@ -35,6 +35,12 @@ let debugSettings = DebugSettings(showsFPS: false, showsPhysics: false, showsNod
 let myScene = CSKScene(size: someSize, debugSettings: debugSettings)
 ```
 
+It's also possible to change debug settings after initialization:
+```swift
+let myScene = CSKScene(size: someSize) // All debug settings are enabled by default...
+myScene.debugSettings = DebugSettings(showsFields: false, showsQuadCount: false) // ... but these will be disabled
+```
+
 ### Observe Game Controllers
 `sink` into the `gcOverseer` to keep track of connect / disconnect events of game controllers. E.g.:
 
@@ -46,6 +52,24 @@ class MyScene: CSKScene {
                 // Do something
             }
             .store(in: &cancellables) // `cancellables` from parent `CSKScene`
+    }
+}
+```
+
+### Default Values
+These properties have the following default values:
+Property name | Default value | Notes
+--- | --- | ---
+[ignoresSiblingOrder](https://developer.apple.com/documentation/spritekit/skview/1520215-ignoressiblingorder) | `true` | Prevents arbitrary z positions that may change every time a new frame is rendered.
+[isMultipleTouchEnabled](https://developer.apple.com/documentation/uikit/uiview/1622519-ismultipletouchenabled) | `true` | Surprinsingly this had to be set to `true` to support multiple touches when working with [SceneView](https://developer.apple.com/documentation/scenekit/sceneview) / SwiftUI.
+
+To set then to `false`, override `CSKScene.didMove(to:)` in your subclass. For example:
+```swift
+class MyScene: CSKScene {
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        view.ignoresSiblingOrder = false
+        view.isMultipleTouchEnabled = false
     }
 }
 ```
