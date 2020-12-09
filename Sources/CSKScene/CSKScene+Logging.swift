@@ -23,12 +23,12 @@ public extension CSKScene {
     /// In the **macOS Console app**, you can filter CSKScene's output by
     /// `SUBSYSTEM`: `com.backslash-f.CSKScene`.
     func enableLogging() {
-        isLoggingEnabled = true
+        CSKScene.isLoggingEnabled = true
     }
 
     /// Disables logging information via `AppLogger`.
     func disableLogging() {
-        isLoggingEnabled = false
+        CSKScene.isLoggingEnabled = false
     }
 }
 
@@ -41,7 +41,7 @@ internal extension CSKScene {
     /// - Parameters:
     ///   - information: The `String` to be logged.
     ///   - category: A member of the `CSKSceneLoggingCategory` enum.
-    func log(information: String, category: CSKSceneLoggingCategory) {
+    static func log(information: String, category: CSKSceneLoggingCategory) {
         guard isLoggingEnabled else {
             return
         }
@@ -50,7 +50,7 @@ internal extension CSKScene {
         logger.log(information)
     }
 
-    func logError(_ error: String) {
+    static func logError(_ error: String) {
         log(information: error, category: .error)
     }
 }

@@ -5,16 +5,22 @@ import SpriteKit
 /// A **custom** `SKScene` subclass with debug options enabled by default and an instance of `GCOverseer`.
 open class CSKScene: SKScene {
 
-    let debugSettings: DebugSettings
+    // MARK: - Properties
 
-    let gcOverseer = GCOverseer()
+    public var debugSettings = DebugSettings() {
+        didSet {
+            updateDebugSettings()
+        }
+    }
 
-    var cancellables = Set<AnyCancellable>()
+    public var cancellables = Set<AnyCancellable>()
+
+    public let gcOverseer = GCOverseer()
 
     // MARK: Internal Properties
 
     /// Enables / disables logging output to both *Xcode's Console* and the macOS *Console app*. `true` by default.
-    internal var isLoggingEnabled: Bool = true
+    internal static var isLoggingEnabled: Bool = true
 
     // MARK: - Lifecycle
 
@@ -23,17 +29,7 @@ open class CSKScene: SKScene {
         super.init(size: size)
     }
 
-    public override init() {
-        self.debugSettings = DebugSettings()
-        super.init()
-    }
-
-    public override init(size: CGSize) {
-        self.debugSettings = DebugSettings()
-        super.init(size: size)
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         self.debugSettings = DebugSettings()
         super.init(coder: aDecoder)
     }
@@ -44,9 +40,10 @@ open class CSKScene: SKScene {
 extension CSKScene {
 
     open override func didMove(to view: SKView) {
-        setupDebugSettings()
-        logInformation()
         super.didMove(to: view)
+        updateDebugSettings()
+        setupDefaultViewOptions()
+        logSceneSize()
     }
 }
 
@@ -54,7 +51,7 @@ extension CSKScene {
 
 private extension CSKScene {
 
-    func setupDebugSettings() {
+    func updateDebugSettings() {
         #if DEBUG
         view?.showsFPS          = debugSettings.showsFPS
         view?.showsFields       = debugSettings.showsFields
@@ -65,7 +62,14 @@ private extension CSKScene {
         #endif
     }
 
-    func logInformation() {
-        log(information: "Scene size: \(size)", category: .sklifecycle)
+    func setupDefaultViewOptions() {
+        view?.ignoresSiblingOrder = true
+        #if os(iOS)
+        view?.isMultipleTouchEnabled = true
+        #endif
+    }
+
+    func logSceneSize() {
+        CSKScene.log(information: "Scene size: \(size)", category: .sklifecycle)
     }
 }
