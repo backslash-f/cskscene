@@ -56,8 +56,18 @@ class MyScene: CSKScene {
 }
 ```
 
-### Default Values
+## Available Properties
+Property | Description | Notes
+-------- | ----------- | -----
+`var viewTop: CGFloat`| The "highest `SKScene` point" converted from the "highest `SKView` point". | -
+`var viewBottom: CGFloat`| The "lowest `SKScene` point" converted from the "lowest`SKView` point". | -
+`var viewLeft: CGFloat`| The "leftmost `SKScene` point" converted from the "leftmost`SKView` point". | -
+`var viewRight: CGFloat`| The "rightmost `SKScene` point" converted from the "rightmost`SKView` point". | -
+`var insets: UIEdgeInsets`| The insets used to determine the safe area of the window. | iOS, tvOS and Mac Catalyst only, as it relies on [`UIEdgeInsets`](https://developer.apple.com/documentation/uikit/uiedgeinsets).
+
+## Default Values
 These properties have the following default values:
+
 Property name | Default value | Notes
 --- | --- | ---
 [ignoresSiblingOrder](https://developer.apple.com/documentation/spritekit/skview/1520215-ignoressiblingorder) | `true` | Prevents arbitrary z positions that may change every time a new frame is rendered.
