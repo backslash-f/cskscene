@@ -17,7 +17,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "AppLogger", url: "https://github.com/backslash-f/applogger", from: "1.0.0"),
-        .package(name: "GCOverseer", url: "https://github.com/backslash-f/gcoverseer", from: "0.2.1")
+        .package(name: "GCOverseer", url: "https://github.com/backslash-f/gcoverseer", from: "0.0.1")
     ],
     targets: [
         .target(
