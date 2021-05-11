@@ -39,11 +39,15 @@ open class CSKScene: SKScene {
 
 extension CSKScene {
 
+    open override func didChangeSize(_ oldSize: CGSize) {
+        super.didChangeSize(oldSize)
+        logSceneSize()
+    }
+
     open override func didMove(to view: SKView) {
         super.didMove(to: view)
         updateDebugSettings()
         setupDefaultViewOptions()
-        logSceneSize()
     }
 }
 
