@@ -98,13 +98,13 @@ class MyNode: CSKNode {
     }
 
     func sinkOnParentChanges() {
-    $didAttachToParent // `didAttachToParent` from parent `CSKNode`
-        .sink { [weak self] isAttachedToParent in
-            if isAttachedToParent {
-                // Setup your node 👈🏻
+        $didAttachToParent // `didAttachToParent` from parent `CSKNode`
+            .sink { [weak self] isAttachedToParent in
+                if isAttachedToParent {
+                    // Setup your node 👈🏻
+                }
             }
-        }
-        .store(in: &cancellables) // `cancellables` from parent `CSKNode`
+            .store(in: &cancellables) // `cancellables` from parent `CSKNode`
     }
 }
 ```
