@@ -3,7 +3,12 @@ import GCOverseer
 import SpriteKit
 
 /// A custom `SKScene` subclass with debug options enabled by default and an instance of `GCOverseer`.
-open class CSKScene: SKScene {
+///
+/// `CSKScene` is also of `ObservableObject` type , which supports using `@StateObject`. For example:
+/// ```swift
+/// @StateObject private var scene: CSKScene { ... }
+/// ```
+open class CSKScene: SKScene, ObservableObject {
 
     // MARK: - Properties
 
