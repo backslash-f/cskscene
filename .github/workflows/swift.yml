@@ -3,7 +3,8 @@ name: "CI"
 on: [push]
 
 jobs:
-  build-test:
+  build_test:
+    name: Build & Test
     runs-on: macos-11
     env:
         DEVELOPER_DIR: /Applications/Xcode_13.0.app/Contents/Developer
@@ -13,11 +14,8 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-      - name: Check out
+      - name: Checkout
         uses: actions/checkout@v2.3.4
-
-      - name: Build
-        run: swift build -v
 
       - name: Test
         run: swift test -v
