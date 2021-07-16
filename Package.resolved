@@ -2,7 +2,7 @@
   "object": {
     "pins": [
       {
-        "package": "AppLogger",
+        "package": "applogger",
         "repositoryURL": "https://github.com/backslash-f/applogger",
         "state": {
           "branch": null,
@@ -11,12 +11,12 @@
         }
       },
       {
-        "package": "GCOverseer",
+        "package": "gcoverseer",
         "repositoryURL": "https://github.com/backslash-f/gcoverseer",
         "state": {
           "branch": null,
-          "revision": "0809c26546d12c38ab179d6bb2cbb259b60b9aa4",
-          "version": "0.2.1"
+          "revision": "908810d48f09bc62842290997177212d77296f2f",
+          "version": "0.2.2"
         }
       }
     ]

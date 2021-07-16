@@ -1,3 +1,4 @@
+import Foundation
 import SpriteKit
 
 public extension CSKScene {
@@ -31,13 +32,6 @@ public extension CSKScene {
         let point = CGPoint(x: view.bounds.size.width, y: .zero)
         return convertPoint(fromView: point).x
     }
-
-    #if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
-    /// The insets used to determine the safe area of the window.
-    var insets: UIEdgeInsets {
-        UIApplication.shared.delegate?.window??.safeAreaInsets ?? .zero
-    }
-    #endif
 }
 
 // MARK: - Private
